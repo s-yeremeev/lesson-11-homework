@@ -1,11 +1,11 @@
-let sec = 15;
+var sec = 15;
 
-let min = 00;
+var min = 00;
 
 function Timer(){
   sec--;
-  // if(sec==-01){sec=59; min=min-1;}
-  // else{min=min;}
+  //  if(sec==-01){sec=59; min=min-1;}
+  //  else{min=min;}
   if(sec<=9){sec="0" + sec;}
   time=(min<=9 ? "0" + min : min) + ":" + sec;
   if(document.getElementById){timer.innerHTML=time;}

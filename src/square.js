@@ -1,7 +1,6 @@
-var ind = 0
+var ind = 1
 class Square {
-    constructor() {
-
+    constructor(...props) {
     this.visibleSquare = function () {
                           let i = 0
                           let slides = document.getElementsByClassName("slides")

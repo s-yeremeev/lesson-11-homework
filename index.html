@@ -22,29 +22,36 @@
   #square3 {
 	  width: 300px;
   	height: 300px;
-	  background: white;
+	  background: greenyellow;
   }
 </style>
 </head>
-<body onLoad="Timer();">
+<!-- HTML -->
+<body OnLoad="Timer();">
 
+   
   <navigation style="position: static;">
     <button class ="button is-large is-info" id="startBtn" type="submit">Start the game</button>
     <button class ="button is-large is-info" id="statBtn" type="submit">View statistics</button>
     <button class ="button is-large is-info" id="clearBtn" type="submit">Clear stats</button>
-    <span id="timer"></span>
   </navigation>
+  <span id="timer" style="display: block;"></span>
 
     <div class="square">
-      <div id="square1" class="slides"></div>
-      <div id="square2" class="slides"></div>
-      <div id="square3" class="slides"></div>
-      </div>
-    <!-- HTML -->
+      <div class="subtitle is-5"><b>Синий квадрат = b, Красный квадр = r, Зеленый квадрат = g</b></div>
+      <div id="square1" class="slides" style="display: none;"></div>
+      <div id="square2" class="slides" style="display: none;"></div>
+      <div id="square3" class="slides" style="display: none;"></div>
+     
+    </div>
+
+     <div class="subtitle is-5" id="points"></div>
+    
 
      <!-- JS -->
-    <script  src="./src/square.js" defer></script>
-    <script  src="./src/game.js" defer></script>
     <script  src="./src/Timer.js" defer></script>
+    <script  src="./src/square.js" defer></script>
+    <script  src="./src/menue.js" defer></script>
+    <script  src="./src/game.js" defer></script>
  </body>
 </html>
