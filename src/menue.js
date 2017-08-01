@@ -1,3 +1,6 @@
+/**
+ * Class Menue
+ */
 class Menue extends Square {
     constructor(...props) {
         super(...props)
@@ -12,23 +15,34 @@ class Menue extends Square {
         this.clickStatistick.addEventListener("click", this.onClickStatistick)  
 
         this.onClickStart = this.onClickStart.bind(this)
-        this.clickStart.addEventListener("click", this.onClickStart)        
-    }
+        this.clickStart.addEventListener("click", this.onClickStart)
+        
+        this.displayClass = function (start, points) {
+            let visibleStart = document.getElementsByClassName("square-all")
+            visibleStart[0].style.display = start; 
+            let visiblePoints = document.getElementsByClassName("view-points")
+            visiblePoints[0].style.display = points; 
+        }
 
-    onClickClear () {
-        localStorage.setItem("positive", 0)
     }
+    
+        onClickClear () {
+            this.displayClass("none", "none")
+            localStorage.setItem("positive", 0)
+        
+        }
 
-    onClickStatistick () {
-        let checkLocalstorage = localStorage.getItem("positive")
-        let points = document.getElementById("points")
-        points.innerHTML = "You scored points:" + checkLocalstorage        
-    }
+        onClickStatistick () {
+            this.displayClass("none", "block")
+            let checkLocalstorage = localStorage.getItem("positive")
+            let points = document.getElementById("points")
+            points.innerHTML = "You scored points:" + checkLocalstorage        
+        }
 
-    onClickStart () {
-       let sq = new Square()
-       sq.visibleSquare()     
-    }
+        onClickStart () {
+            this.displayClass("block", "none")
+            this.visibleSquare()    
+        }
 }
 
 const menue = new Menue()

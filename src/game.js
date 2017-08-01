@@ -1,3 +1,6 @@
+/**
+ * Class Game
+ */
 class Game extends Square {
     constructor(...props) {
         super(...props)
@@ -7,11 +10,9 @@ class Game extends Square {
             return style.backgroundColor;
         }
 
-        
         this.checkSquare = function(keyCode) {
             const slides = document.getElementsByClassName("slides")
-            let ind2 = ind - 1
-            let color = getColor(document.getElementsByClassName("slides")[ind2])
+            let color = getColor(document.getElementsByClassName("slides")[ind])
             let checkDataLocalstorage = localStorage.getItem("positive")
 
             switch (keyCode){                        
@@ -29,7 +30,7 @@ class Game extends Square {
                 console.log("Error")
                     break;
             }
-            }
+        }
 }
 }
 
@@ -55,5 +56,4 @@ timer.start(function () {
                
             }
         }
-        
 })

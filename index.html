@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  
+  <meta charset="UTF-8"> 
  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -27,31 +26,41 @@
 </style>
 </head>
 <!-- HTML -->
-<body OnLoad="Timer();">
-
-   
+<body>  
   <navigation style="position: static;">
-    <button class ="button is-large is-info" id="startBtn" type="submit">Start the game</button>
-    <button class ="button is-large is-info" id="statBtn" type="submit">View statistics</button>
-    <button class ="button is-large is-info" id="clearBtn" type="submit">Clear stats</button>
+      <button class ="button is-large is-info" id="startBtn" type="submit" onclick="refresh();">Start the game</button>
+      <button class ="button is-large is-info" id="statBtn" type="submit">View Points</button>
+      <button class ="button is-large is-info" id="clearBtn" type="submit">Clear stats</button>
   </navigation>
-  <span id="timer" style="display: block;"></span>
 
-    <div class="square">
-      <div class="subtitle is-5"><b>Синий квадрат = b, Красный квадр = r, Зеленый квадрат = g</b></div>
-      <div id="square1" class="slides" style="display: none;"></div>
-      <div id="square2" class="slides" style="display: none;"></div>
-      <div id="square3" class="slides" style="display: none;"></div>
-     
-    </div>
+  <div class="square-all" style="display: none;">
+        <div class="subtitle is-5"><b>Blue square = b, Red square = r, Green square = g</b></div>
+        <span id="timerfield"></span>
+        <div id="square1" class="slides"></div>
+        <div id="square2" class="slides"></div>
+        <div id="square3" class="slides"></div>
+  </div>
 
-     <div class="subtitle is-5" id="points"></div>
-    
+  <div class="view-points" id="points" style="display: none;"></div>    
 
      <!-- JS -->
-    <script  src="./src/Timer.js" defer></script>
     <script  src="./src/square.js" defer></script>
     <script  src="./src/menue.js" defer></script>
     <script  src="./src/game.js" defer></script>
+    <script language="JavaScript">
+              let sec =  15;
+              let min =  00;
+              function refresh()
+              {
+                sec--;
+                if(sec==-01){sec=15; min=min-1;}
+                else{min=min;}
+                if(sec<=9){sec="0" + sec;}
+                time=sec; 
+                if(document.getElementById){timerfield.innerHTML=time;}
+                inter=setTimeout("refresh()", 1000);
+                if(min=='00' && sec=='00'){sec="00"; clearInterval(inter); alert("The round is over")}
+              }
+    </script>
  </body>
 </html>
