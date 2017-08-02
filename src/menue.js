@@ -26,9 +26,12 @@ class Menue extends Square {
 
     }
     
-        onClickClear () {
+        onClickClear() {
             this.displayClass("none", "none")
             localStorage.setItem("positive", 0)
+            let points = document.getElementById("points")
+            points.innerHTML = ""
+            localStorage.setItem("flag", true) 
         
         }
 
@@ -36,12 +39,16 @@ class Menue extends Square {
             this.displayClass("none", "block")
             let checkLocalstorage = localStorage.getItem("positive")
             let points = document.getElementById("points")
-            points.innerHTML = "You scored points:" + checkLocalstorage        
+            points.innerHTML = "You scored points:" + checkLocalstorage 
+            localStorage.setItem("flag", false)
         }
 
-        onClickStart () {
-            this.displayClass("block", "none")
-            this.visibleSquare()    
+        onClickStart () { 
+            let flag = localStorage.getItem("flag")
+            if(flag) {
+                this.displayClass("block", "none")           
+                this.visibleSquare()   
+            }
         }
 }
 

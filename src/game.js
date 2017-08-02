@@ -47,6 +47,7 @@ Timer.prototype.start = function (callback) {
 const game = new Game()
 const timer = new Timer(1000)
 localStorage.setItem("positive", 0)
+localStorage.setItem("flag", true)
 timer.start(function () {  
         document.onkeypress = function (e) {
             let keyCode = e.keyCode

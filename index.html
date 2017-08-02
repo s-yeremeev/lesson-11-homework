@@ -45,21 +45,32 @@
 
      <!-- JS -->
     <script  src="./src/square.js" defer></script>
-    <script  src="./src/menue.js" defer></script>
     <script  src="./src/game.js" defer></script>
-    <script language="JavaScript">
-              let sec =  15;
-              let min =  00;
-              function refresh()
-              {
-                sec--;
-                if(sec==-01){sec=15; min=min-1;}
-                else{min=min;}
-                if(sec<=9){sec="0" + sec;}
-                time=sec; 
-                if(document.getElementById){timerfield.innerHTML=time;}
-                inter=setTimeout("refresh()", 1000);
-                if(min=='00' && sec=='00'){sec="00"; clearInterval(inter); alert("The round is over")}
+    <script  src="./src/menue.js" defer></script>
+    <script>                          
+              var sec =  15; 
+              function refresh() {               
+                if (sec == -1) sec = 15
+                if (sec<=9) sec = "0" + sec
+                time = sec; 
+
+                if (document.getElementById) timerfield.innerHTML = time
+
+                let points = document.getElementById("points")
+                if (points.innerHTML != "" ) {  
+                  sec = '00'                 
+                  clearInterval(inter);
+                } else {
+                  --sec;
+                  inter = setTimeout("refresh()", 1000);
+                }
+
+                if (sec == '00'){
+                  clearInterval(inter); 
+                  alert("The round is over")
+                  let menue = new Menue()
+                  menue.onClickStatistick()
+                }
               }
     </script>
  </body>
